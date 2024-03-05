@@ -39,7 +39,7 @@ function RemoteListener.new(size: number, location: Instance)
     }
 
     if (RF) then
-        RF.OnServerInvoke = function(player, ...) onConnection(self.Connections, player, "REMOTE_FUNCTION", ...) end;
+        RF.OnServerInvoke = function(player, ...) return onConnection(self.Connections, player, "REMOTE_FUNCTION", ...) end;
     end
     setmetatable(self, RemoteListener);
     return self;

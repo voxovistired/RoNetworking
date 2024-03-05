@@ -7,9 +7,11 @@ local theConnection: RemoteListener.Connection? = test1:SetConnection("AddPoint"
     print(`Oh cool! We are adding on a point to {player.Name}`);
 end)
 
+test1:SetConnection("TimeTaking", "REMOTE_FUNCTION", function(player: Player, ...)
+    return tick();
+end)
+
 print(theConnection);
 print(test1:GetProperty("Size"));
-
-task.wait(2);
 
 test1:Destroy();
