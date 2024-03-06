@@ -1,3 +1,5 @@
+--!native
+--!optimize 2
 local RemoteListener = {}
 RemoteListener.__index = RemoteListener;
 
@@ -23,7 +25,7 @@ end
 
 -- Creates a new RemoteListener
 -- size: number is used to detail how many connections can be held at once.
-function RemoteListener.new(size: number, location: Instance)
+function RemoteListener.new(location: Instance, size: number)
     assert(location, "There is no location present to look for remotes, try again.");
     local self = {};
 
@@ -65,6 +67,7 @@ function RemoteListener:RemoveConnection(ConnectionName: string, ConnectionType:
     for i = 1, #self.Connections do
         if (self.Connections[i].Name == ConnectionName and self.Connections[i].Type == ConnectionType) then
             removedConnection = self.Connections[i];
+            table.clear(self.Connections[i]);
         end
     end
 
