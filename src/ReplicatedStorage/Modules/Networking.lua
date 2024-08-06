@@ -18,7 +18,7 @@ type RemoteEnum = "REMOTE_EVENT" | "REMOTE_FUNCTION" | "UREMOTE_EVENT";
 -- Functions
 -- Access various different remotes.
 local function getRE(): RemoteEvent
-	local r: RemoteEvent = script:FindFirstChild("RE");
+	local r: RemoteEvent = script:WaitForChild("RE", 5);
 	if (r == nil) then
 		r = Instance.new("RemoteEvent");
 		r.Name = "RE";
@@ -27,7 +27,7 @@ local function getRE(): RemoteEvent
 	return r;
 end
 local function getRF(): RemoteFunction
-	local r: RemoteFunction = script:FindFirstChild("RF");
+	local r: RemoteFunction = script:WaitForChild("RF", 5);
 	if (r == nil) then
 		r = Instance.new("RemoteFunction");
 		r.Name = "RF";
@@ -36,7 +36,7 @@ local function getRF(): RemoteFunction
 	return r;
 end
 local function getURE(): UnreliableRemoteEvent
-	local r: UnreliableRemoteEvent = script:FindFirstChild("URE");
+	local r: UnreliableRemoteEvent = script:WaitForChild("URE", 5);
 	if (r == nil) then
 		r = Instance.new("UnreliableRemoteEvent");
 		r.Name = "URE";
