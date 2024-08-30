@@ -5,12 +5,18 @@
     "ServerScriptService": {
       "$className": "ServerScriptService",
       "$ignoreUnknownInstances": true,
-      "$path": "src/ServerScriptService"
+      "Server": {
+        "$path": "src/Server",
+        "$ignoreUnknownInstances": true
+      }
     },
     "ReplicatedStorage": {
       "$className": "ReplicatedStorage",
       "$ignoreUnknownInstances": true,
-      "$path": "src/ReplicatedStorage"
+      "Shared": {
+        "$path": "src/Shared",
+        "$ignoreUnknownInstances": true
+      }
     },
     "StarterPlayerr": {
       "$className": "StarterPlayer",
@@ -19,7 +25,7 @@
         "$className": "StarterPlayerScripts",
         "$ignoreUnknownInstances": true,
         "Client": {
-          "$path": "src/StarterPlayer/StarterPlayerScripts/Client",
+          "$path": "src/Client",
           "$ignoreUnknownInstances": true
         }
       }
