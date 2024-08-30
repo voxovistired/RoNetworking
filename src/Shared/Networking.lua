@@ -16,8 +16,8 @@ local EventRegistry: { [RemoteEnum]: { [string]: (any) -> any? } } = {
 type RemoteEnum = "RE" | "RF" | "URE";
 
 -- Helper Functions
-local function getRE(): RemoteEvent?
-	local r: RemoteEvent? = script:FindFirstChild("RE");
+local function getRE(): RemoteEvent
+	local r: RemoteEvent = script:FindFirstChild("RE");
 	if (r == nil) then
 		if (RunService:IsClient()) then
 			r = script:WaitForChild("RE", 15)
@@ -29,8 +29,8 @@ local function getRE(): RemoteEvent?
 	end
 	return r;
 end
-local function getRF(): RemoteFunction?
-	local r: RemoteFunction? = script:FindFirstChild("RF");
+local function getRF(): RemoteFunction
+	local r: RemoteFunction = script:FindFirstChild("RF");
 	if (r == nil) then
 		if (RunService:IsClient()) then
 			r = script:WaitForChild("RF", 15)
@@ -43,7 +43,7 @@ local function getRF(): RemoteFunction?
 	return r;
 end
 local function getURE(): UnreliableRemoteEvent
-	local r: UnreliableRemoteEvent? = script:FindFirstChild("URE");
+	local r: UnreliableRemoteEvent = script:FindFirstChild("URE");
 	if (r == nil) then
 		if (RunService:IsClient()) then
 			r = script:WaitForChild("URE", 15)
@@ -91,6 +91,7 @@ if (RunService:IsClient()) then
 		elseif (rType == "RF") then
 			return getRF():InvokeServer(_headerBuf, ...);
 		end
+		return;
 	end
 	
 	if (RunService:IsStudio()) then
@@ -130,6 +131,7 @@ else
 		elseif (rType == "RF") then
 			return getRF():InvokeClient(plr, _headerBuf, ...);
 		end
+		return;
 	end
 
 	function Network.Server:FireAllActors(name: string, rType: RemoteEnum, ...)
